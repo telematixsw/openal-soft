@@ -6,6 +6,7 @@
 #include "aloptional.h"
 
 void ReadALConfig();
+void LoadConfigFromFile(std::istream &f);
 
 int ConfigValueExists(const char *devName, const char *blockName, const char *keyName);
 const char *GetConfigValue(const char *devName, const char *blockName, const char *keyName, const char *def);

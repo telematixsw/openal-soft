@@ -33,6 +33,7 @@
 #include <functional>
 
 #include "alcmain.h"
+#include "alconfig.h"
 #include "alexcpt.h"
 #include "alu.h"
 #include "compat.h"
@@ -509,6 +510,9 @@ bool OpenSLPlayback::reset()
         if(SL_RESULT_SUCCESS == result)
         {
             SLint32 streamType = SL_ANDROID_STREAM_MEDIA;
+            if (auto cfgStreamType = ConfigValueInt(nullptr, "opensl", "androidPlaybackStreamType"))
+                streamType = cfgStreamType.value();
+
             result = VCALL(config,SetConfiguration)(SL_ANDROID_KEY_STREAM_TYPE, &streamType,
                 sizeof(streamType));
             PRINTERR(result, "config->SetConfiguration");

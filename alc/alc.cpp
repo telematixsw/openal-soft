@@ -3588,6 +3588,11 @@ START_API_FUNC
 }
 END_API_FUNC
 
+ALCdevice* ALC_APIENTRY alcOpenDeviceExt(const ALCchar *deviceName, std::istream &config)
+{
+    LoadConfigFromFile(config);
+    return alcOpenDevice(deviceName);
+}
 
 ALC_API ALCdevice* ALC_APIENTRY alcOpenDevice(const ALCchar *deviceName)
 START_API_FUNC

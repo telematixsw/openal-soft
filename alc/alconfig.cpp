@@ -128,6 +128,8 @@ std::string expdup(const char *str)
     return output;
 }
 
+} // namespace
+
 void LoadConfigFromFile(std::istream &f)
 {
     std::string curSection;
@@ -276,8 +278,6 @@ void LoadConfigFromFile(std::istream &f)
     }
     ConfOpts.shrink_to_fit();
 }
-
-} // namespace
 
 
 #ifdef _WIN32
